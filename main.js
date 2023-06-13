@@ -11,13 +11,14 @@ function positionSuccess({ coords }) {
     coords.longitude,
     Intl.DateTimeFormat().resolvedOptions().timeZone
   )
-    // .then((data) => console.log(data))
     .then(renderWeather)
     .catch((error) => console.error(error));
 }
 
 function positionError() {
-  console.error("error");
+  getWeather(10, 10, Intl.DateTimeFormat().resolvedOptions().timeZone)
+    .then(renderWeather)
+    .catch((error) => console.error(error));
 }
 
 function renderWeather({ current, daily, hourly }) {
